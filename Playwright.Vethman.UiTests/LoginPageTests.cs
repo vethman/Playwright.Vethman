@@ -13,7 +13,8 @@ namespace Playwright.Vethman.UiTests
             await _loginPage.OpenAsync();
         }
 
-        //Sometimes there will be a captcha, please run again or use SlowMo to help clicking the pictures =D
+        //Sometimes there will be a captcha, please run again or set a breakpoint to help clicking the pictures =D
+        //If you want te renew the storagestate please first delete state.json before running test
         [Test]
         [Ignore("Only run when no storagestate or to renew storagestate")]
         public async Task LoginAndSaveState()
@@ -21,6 +22,7 @@ namespace Playwright.Vethman.UiTests
             await _loginPage.OpenAsync();
             await _loginPage.LoginAsync();
 
+            //Breakpoint here: when to solve Captcha and continue after
             await Page.WaitForURLAsync(TestContext.Parameters.Get("BaseUrl")!);
 
             await Page.Context.StorageStateAsync(new()
