@@ -13,7 +13,7 @@ namespace Playwright.Vethman.UiTests
             await _loginPage.OpenAsync();
         }
 
-        //Sometimes there will be a captcha, please run again =D
+        //Sometimes there will be a captcha, please run again or use SlowMo to help clicking the pictures =D
         [Test]
         [Ignore("Only run when no storagestate or to renew storagestate")]
         public async Task LoginAndSaveState()
