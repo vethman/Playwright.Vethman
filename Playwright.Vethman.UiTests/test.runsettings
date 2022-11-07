@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+	<NUnit>
+		<NumberOfTestWorkers>4</NumberOfTestWorkers>
+	</NUnit>
+	<Playwright>
+		<BrowserName>chromium</BrowserName>
+		<ExpectTimeout>10000</ExpectTimeout>
+		<LaunchOptions>
+			<Headless>false</Headless>
+			<Channel>msedge</Channel>
+		</LaunchOptions>
+	</Playwright>
+	<TestRunParameters>
+		<Parameter name="BaseUrl" value="https://bestellen.dominos.nl/" />
+		<Parameter name="DefaultTimeout" value="10000" />
+		<Parameter name="Tracing" value="true" />
+		<Parameter name="Email" value="testabitter@outlook.com" />
+		<Parameter name="Username" value="Testabiter" />
+		<Parameter name="Password" value="PlaywrightWorkshop" />
+	</TestRunParameters>
+</RunSettings>
