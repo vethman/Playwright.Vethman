@@ -9,6 +9,8 @@
 		<LaunchOptions>
 			<Headless>false</Headless>
 			<Channel>msedge</Channel>
+			<!--For local testing only-->
+			<!--<SlowMo>2000</SlowMo>-->
 		</LaunchOptions>
 	</Playwright>
 	<TestRunParameters>

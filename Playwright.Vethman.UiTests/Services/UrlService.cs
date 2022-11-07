@@ -5,10 +5,10 @@ public class UrlService
     private readonly IPage _page;
     private readonly string _baseUrl;
 
-    public UrlService(IPage page, string baseUrl)
+    public UrlService(IPage page)
     {
         _page = page;
-        _baseUrl = baseUrl;
+        _baseUrl = TestContext.Parameters.Get("BaseUrl")!;
     }
 
     public async Task NavigateToAsync(string urlExtension = "")

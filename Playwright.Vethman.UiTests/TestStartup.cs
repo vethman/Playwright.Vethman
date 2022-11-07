@@ -69,7 +69,7 @@ public class TestStartup : PageTest
         var services = new ServiceCollection();
 
         services.AddTransient(_ => Page);
-        services.AddTransient(_ => new UrlService(Page, BaseUrl));
+        services.AddTransient(_ => new UrlService(Page));
 
         var pageObjects = typeof(TestStartup).Assembly.GetTypes()
             .Where(s => s.FullName!.Contains(".PageObjects.") && s.IsInterface == false);
