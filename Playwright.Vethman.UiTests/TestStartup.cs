@@ -8,7 +8,7 @@ public class TestStartup : PageTest
 {
     private readonly IServiceProvider _serviceProvider;
 
-    private string BaseUrl => TestContext.Parameters.Get("BaseUrl")!;
+    private static string BaseUrl => TestContext.Parameters.Get("BaseUrl")!;
 
     [SetUp]
     public async Task SetupStartupAsync()

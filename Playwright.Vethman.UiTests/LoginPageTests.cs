@@ -22,8 +22,8 @@ namespace Playwright.Vethman.UiTests
             await _loginPage.OpenAsync();
             await _loginPage.LoginAsync();
 
-            //Breakpoint here: when to solve Captcha and continue after
-            await Page.WaitForURLAsync(TestContext.Parameters.Get("BaseUrl")!);
+            //If there is a captcha you have 30 seconds to complete and press Login again manually, slowpokes can
+            await Page.WaitForURLAsync(TestContext.Parameters.Get("BaseUrl")!, new PageWaitForURLOptions { Timeout = 30000 });
 
             await Page.Context.StorageStateAsync(new()
             {
