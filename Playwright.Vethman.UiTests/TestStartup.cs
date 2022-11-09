@@ -10,38 +10,6 @@ public class TestStartup : PageTest
 
     private static string BaseUrl => TestContext.Parameters.Get("BaseUrl")!;
 
-    [SetUp]
-    public async Task SetupStartupAsync()
-    {
-        Context.SetDefaultTimeout(TestContext.Parameters.Get("DefaultTimeout", 10000));
-
-        if (TestContext.Parameters.Get("Tracing", false))
-        {
-            await Context.Tracing.StartAsync(new()
-            {
-                Screenshots = true,
-                Snapshots = true,
-                Sources = true
-            });
-        }
-    }
-
-    [TearDown]
-    public async Task TearDownStartupAsync()
-    {
-        if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
-        {
-            var path = $"Tracing/{TestContext.CurrentContext.Test.FullName}_{DateTime.Now:yyyyMMddHHmmssss}.zip";
-
-            await Context.Tracing.StopAsync(new()
-            {
-                Path = path
-            });
-
-            TestContext.AddTestAttachment(path);
-        }
-    }
-
     public TestStartup()
     {
         _serviceProvider = BuildServices();
@@ -51,14 +19,11 @@ public class TestStartup : PageTest
 
     public override BrowserNewContextOptions ContextOptions()
     {
-        var stateFileExists = File.Exists("state.json");
-
         var browserNewContextOptions = new BrowserNewContextOptions()
         {
-            ColorScheme = ColorScheme.Light,
+            ColorScheme = ColorScheme.Dark,
             BaseURL = BaseUrl,
-            ScreenSize = new ScreenSize() { Width = 1920, Height = 1080 },
-            StorageStatePath = stateFileExists ? "state.json" : null
+            ScreenSize = new ScreenSize() { Width = 1920, Height = 1080 }
         };
 
         return browserNewContextOptions;

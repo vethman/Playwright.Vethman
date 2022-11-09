@@ -14,11 +14,6 @@
 		</LaunchOptions>
 	</Playwright>
 	<TestRunParameters>
-		<Parameter name="BaseUrl" value="https://bestellen.dominos.nl/" />
-		<Parameter name="DefaultTimeout" value="10000" />
-		<Parameter name="Tracing" value="true" />
-		<Parameter name="Email" value="testabitter@outlook.com" />
-		<Parameter name="Username" value="Testabiter" />
-		<Parameter name="Password" value="PlaywrightWorkshop" />
+		<Parameter name="BaseUrl" value="https://github.com/vethman" />
 	</TestRunParameters>
 </RunSettings>

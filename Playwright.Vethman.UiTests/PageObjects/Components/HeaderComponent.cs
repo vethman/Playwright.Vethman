@@ -9,21 +9,17 @@ public class HeaderComponent
         _page = page;
     }
 
-    public ILocator CustomerTitle => _page.Locator("p[data-testid='customer-account.title']");
-    public ILocator LoginTitle => _page.Locator("p[data-testid='log-in.title']");
+    private ILocator Component => _page.Locator(".Layout-main nav").First;
+    private ILocator Overview => Component.Locator("a:has-text(\"Overview\")");
+    private ILocator Repositories => Component.Locator("a:has-text(\"Repositories\")");
 
-    private ILocator Customer => _page.Locator("div[data-testid='customer-account']");
-    private ILocator Login => _page.Locator("div[data-testid='log-in']");
-    private ILocator LogoutButton => _page.Locator("li[data-testid='logout.button']");
-
-    public async Task NavigateToLoginAsync()
+    public Task NavigateToOverviewAsync()
     {
-        await Login.ClickAsync();
+        return Overview.ClickAsync();
     }
 
-    public async Task LogoutAsync()
+    public Task NavigateToRepositoriesAsync()
     {
-        await Customer.ClickAsync();
-        await LogoutButton.ClickAsync();
+        return Repositories.ClickAsync();
     }
 }
