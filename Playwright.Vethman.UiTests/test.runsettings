@@ -5,15 +5,11 @@
 	</NUnit>
 	<Playwright>
 		<BrowserName>chromium</BrowserName>
-		<ExpectTimeout>10000</ExpectTimeout>
 		<LaunchOptions>
 			<Headless>false</Headless>
+			<!--Remove line channel to speed up teardown-->
+			<!--msedge is slow in combination with headless False-->
 			<Channel>msedge</Channel>
-			<!--For local testing only-->
-			<!--<SlowMo>2000</SlowMo>-->
 		</LaunchOptions>
 	</Playwright>
-	<TestRunParameters>
-		<Parameter name="BaseUrl" value="https://github.com/vethman" />
-	</TestRunParameters>
 </RunSettings>

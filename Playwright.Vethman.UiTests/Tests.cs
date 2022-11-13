@@ -1,31 +1,18 @@
-using Playwright.Vethman.UiTests.Services;
-
 namespace Playwright.Vethman.UiTests;
 
 [Parallelizable(ParallelScope.Self)]
-public class Tests : TestStartup
+public class Tests : PageTest
 {
-    private UrlService _urlService;
-
-    [SetUp]
-    public async Task Setup()
+    // Set channel to msedge to have a slow shutdown, only in headed mode. Headless is fast.
+    [Test]
+    public async Task SlowTestRunShutDownWhenTestFails()
     {
-        _urlService = GetService<UrlService>();
-        await _urlService.NavigateToAsync();
+        Assert.Fail();
     }
 
     [Test]
-    public async Task NoError_CompletesTestrunFast()
+    public async Task FastTestRunShutDownWhenTestSucceeds()
     {
-        await Expect(Page).ToHaveURLAsync(TestContext.Parameters.Get("BaseUrl")!);
-    }
-
-    // Change headless value in test.runsettings to see the effect
-    [Test]
-    public async Task Error_HeadedCompletesTestrunSlow_HeadlessIsFast()
-    {
-        await Expect(Page).ToHaveURLAsync(TestContext.Parameters.Get("BaseUrl")!);
-
-        Assert.That(true, Is.EqualTo(false));
+        Assert.True(true);
     }
 }
