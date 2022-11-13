@@ -3,6 +3,8 @@ Demo project for using Playwright with NUnit
 
 When I run a test that fails in headed mode (Headless = false), then the completion of a testrun takes 30 seconds. WaitForCompletion(int timeout) has a timeout value of -1. Why? If I run the same test headless, then there is no wait.
 
+Seems like it has to do something with the channel=msedge I am using. When I remove that and use chrome, headed works fine too.
+
 # Here is the stacktrace:
 
 System.Private.CoreLib.dll!System.Threading.ManualResetEventSlim.Wait(int millisecondsTimeout, System.Threading.CancellationToken cancellationToken)	Unknown
